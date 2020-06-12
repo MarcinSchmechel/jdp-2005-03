@@ -6,8 +6,7 @@ public class UserDto {
     private Boolean status;
     private Long userKey;
 
-    public UserDto(Long id, String userName, Boolean status, Long userKey) {
-        this.id = id;
+    public UserDto(String userName, Boolean status, Long userKey) {
         this.userName = userName;
         this.status = status;
         this.userKey = userKey;

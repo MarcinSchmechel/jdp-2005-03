@@ -28,8 +28,7 @@ public class CartDto {
         return groupId;
     }
 
-    public CartDto(Long id, String name, String description, Double price, String groupId) {
-        this.id = id;
+    public CartDto(String name, String description, Double price, String groupId) {
         this.name = name;
         this.description = description;
         this.price = price;

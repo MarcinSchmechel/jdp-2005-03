@@ -44,8 +44,7 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(int id, String name, String description, double price, String productId) {
-        this.id = id;
+    public Cart(String name, String description, double price, String productId) {
         this.name = name;
         this.description = description;
         this.price = price;
