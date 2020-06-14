@@ -3,20 +3,6 @@ package com.kodilla.ecommercee.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@NamedNativeQueries({
-    @NamedNativeQuery(
-            name = "Order.getUserId",
-            query = "SELECT * FROM USER",
-            resultClass = User.class
-    ),
-
-    @NamedNativeQuery(
-            name = "Order.getCartId",
-            query = "SELECT * FROM CART",
-            resultClass = Cart.class
-    )
-})
-
 @Entity
 @Table(name = "ORDERS")
 public class Order {
@@ -45,7 +31,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Long userId, Long cartId) {
+    public Order(Long userId, Long cartId) {
     }
 
     public void setId(Long id) {

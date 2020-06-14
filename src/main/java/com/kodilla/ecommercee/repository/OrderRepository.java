@@ -11,9 +11,4 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface OrderRepository extends CrudRepository <Order, Long> {
 
-    @Query
-    Long getUserId();
-
-    @Query
-    Long getCartId();
 }

@@ -3,6 +3,13 @@ package com.kodilla.ecommercee.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@NamedNativeQuery(
+        name = "Cart.getCartId",
+        query = "SELECT * FROM CART" +
+        " WHERE ID = 1",
+        resultClass = Cart.class
+)
+
 @Entity
 @Table(name = "CART")
 public class Cart {

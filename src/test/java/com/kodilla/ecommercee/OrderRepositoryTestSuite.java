@@ -6,6 +6,7 @@ import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.UserRepository;
+import com.kodilla.ecommercee.service.OrderService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,25 +28,29 @@ public class OrderRepositoryTestSuite {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private OrderService orderService;
+
     @Test
     public void testSave() {
         //Given
-    User user1 = new User("Jan", true, 1L);
-    User user2 = new User("Jan", true, 1L);
-    Cart cart1 = new Cart("Kapcie", "Cieple kapcie", 100.00, "1");
+        User user1 = new User("Jan", true, 1L);
+        Cart cart1 = new Cart("Kapcie", "Cieple kapcie", 100.00, "1");
 
-    userRepository.save(user1);
-    userRepository.save(user2);
-    cartRepository.save(cart1);
+        userRepository.save(user1);
+        cartRepository.save(cart1);
 
-    int idUser2 = Math.toIntExact(user2.getId());
-    int idUser1 = Math.toIntExact(user1.getId());
+        Order order = new Order(user1.getId(), (long) cart1.getId());
+
         //When
+        Order saved = orderService.save(order);
 
         //Then
-        Assert.assertEquals(2, idUser2);
-        Assert.assertEquals(1, idUser1);
+        Assert.assertNotNull(saved);
 
-
+        //Clean up
+        orderRepository.delete(order);
+        userRepository.delete(user1);
+        cartRepository.delete(cart1);
     }
 }
